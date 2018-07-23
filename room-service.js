@@ -9,11 +9,11 @@ const findRoom = user =>
     gRooms.find(room => room.members.find(({ id }) => id === user.id));
 
 const findAvailableRoom = () =>
-    gRooms.find(({ members }) => members.length === 1);
+    gRooms.find((room) => room.members.length === 1);
 
 const createRoom = user => ({
-    members: [user],
-    id: shortId()
+    id: shortId(),
+    members: [user]
 });
 
 const printRoomMsg = (msg, userRoom) =>

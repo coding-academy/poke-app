@@ -1,5 +1,5 @@
 
-var socket = io('');
+var socket = io();
 import utils from './util.service.js';
 import storgeService from './storage.service.js';
 
@@ -7,7 +7,7 @@ import storgeService from './storage.service.js';
 const pokes = []
 var user = getUser()
 
-function init(){
+function init() {
 
 	socket.emit('roomRequested', user);
 
@@ -21,29 +21,19 @@ function init(){
 }
 
 function getUser() {
-    // var user = storgeService.load('user');
-	// if (!user) {
-		user = {
-			// nickName: prompt('first time. what is your name?'),
-			// id: utils.getRandomString(6)
-			id: prompt('Your nickname')
-		};
-		// storgeService.store('user', user);
-	// }
+	user = {
+		id: prompt('Your nickname')
+	};
 	return user;
 }
 
-function sendPoke(poke){
+function sendPoke(poke) {
 	socket.emit('poke', { user, msg: poke })
 }
 
 
-
-
-
-
 export default {
-	user, 
+	user,
 	pokes,
 	init,
 	sendPoke

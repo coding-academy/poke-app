@@ -10,7 +10,7 @@ var getRoom = require('./room-service');
 app.use(express.static('front'));
 
 io.on('connection', socket => {
-	console.log('coooonet');
+	console.log('coooonect');
 	var userRoom;
 	var user;
 	socket.on('roomRequested', connectedUser => {
